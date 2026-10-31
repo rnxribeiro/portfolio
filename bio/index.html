@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#080808" />
+    <meta name="description" content="Todos os links do Renan Ribeiro." />
+    <meta name="author" content="Renan Ribeiro" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="%VITE_SITE_URL%/bio" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RNX — Renan Ribeiro" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content="%VITE_SITE_URL%/bio" />
+    <meta property="og:title" content="Renan Ribeiro — Links" />
+    <meta property="og:description" content="Todos os links do Renan Ribeiro." />
+    <meta property="og:image" content="%VITE_SITE_URL%/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Renan Ribeiro — Desenvolvedor de Software" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Renan Ribeiro — Links" />
+    <meta name="twitter:description" content="Todos os links do Renan Ribeiro." />
+    <meta name="twitter:image" content="%VITE_SITE_URL%/og-image.jpg" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <script>
+      // Tema escuro é o padrão; só vira claro se a pessoa tiver escolhido isso antes. Roda antes do React (sem "flash").
+      try {
+        var d = document.documentElement;
+        var dark = true; // a /bio é sempre escura
+        d.dataset.theme = dark ? "dark" : "light";
+        document.querySelector('meta[name="theme-color"]').setAttribute("content", dark ? "#080808" : "#f6f6f4");
+      } catch (e) {}
+    </script>
+    <title>Renan Ribeiro — Links</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
