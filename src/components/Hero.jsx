@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, Download } from "lucide-react";
+import { ArrowUpRight, Download } from "lucide-react";
 import { site } from "../data/site.js";
 import { socials, heroSocials } from "../data/socials.js";
 import { useLang } from "../i18n/LanguageContext.jsx";
@@ -40,7 +39,6 @@ export default function Hero({ onNext, onScroll }) {
                 {t("hero.viewCv")} <Download size={16} aria-hidden="true" />
               </button>
             )}
-            <Link to="/contact" className="link-arrow">{t("hero.contact")} <ArrowRight size={14} aria-hidden="true" /></Link>
           </div>
 
           <div className="hero__social intro" style={{ "--d": "880ms" }}>
