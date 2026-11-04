@@ -9,10 +9,9 @@ import { useLang } from "../i18n/LanguageContext.jsx";
 // A inclinação vem do motor de movimento (--gx / --gy, via data-tilt); quando ninguém interage,
 // o objeto deriva devagar (data-tilt-idle). Decorativo: o nome de verdade está no <h1>.
 //   words: palavras da base (padrão: site.hero.prism) · className: variação de tamanho (ex.: "prism--sm")
-//   mono: texto grande do centro (padrão: site.brand; a 404 usa "404")
 const SLICES = 8;
 
-export default function GlassPrism({ words: wordsProp, mono = site.brand, className = "" }) {
+export default function GlassPrism({ words: wordsProp, className = "" }) {
   const { L } = useLang();
   const words = (wordsProp || site.hero.prism).map(L);
 
@@ -25,7 +24,7 @@ export default function GlassPrism({ words: wordsProp, mono = site.brand, classN
           <span key={i} className="prism__slice" style={{ "--k": i / (SLICES - 1) }} />
         ))}
 
-        <span className="prism__layer prism__mono" style={{ "--z": "-10px" }}>{mono}</span>
+        <span className="prism__layer prism__mono" style={{ "--z": "-10px" }}>{site.brand}</span>
         <span className="prism__layer prism__meta prism__meta--tl" style={{ "--z": "26px" }}>{site.name}</span>
         <span className="prism__layer prism__meta prism__meta--tr" style={{ "--z": "26px" }}>{site.year}</span>
         <ul className="prism__words">
