@@ -32,6 +32,18 @@
 :root[data-theme="light"] .prism__face--front { border-color: rgba(17, 17, 17, 0.12); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 0 24px rgba(255, 255, 255, 0.12); }
 :root[data-theme="light"] .prism__grid { opacity: 0.55; }
 
+/* ─── telas grandes e ultrawide ───
+   O layout foi desenhado para ~1180px de conteúdo. Em telas maiores:
+   · o site inteiro é ampliado por igual (zoom), mas só quando a tela é ALTA o bastante — o hero precisa de ~980px
+     de altura, então uma ultrawide de 1080p (mesma altura de um monitor comum) não amplia, só ganha largura;
+   · em telas ultrawide (21:9 ou mais) a coluna de conteúdo fica mais larga para aproveitar a largura.
+   Como o zoom também amplia as unidades vh/svh, quem usa altura da tela divide por --zoom. */
+:root { --zoom: 1; }
+@media (min-width: 1800px) and (min-height: 1150px) { :root { --zoom: 1.2; zoom: 1.2; } }
+@media (min-width: 2200px) and (min-height: 1280px) { :root { --zoom: 1.32; zoom: 1.32; } }
+@media (min-width: 3000px) and (min-height: 1800px) { :root { --zoom: 1.75; zoom: 1.75; } }
+@media (min-width: 2200px) and (min-aspect-ratio: 2/1) { :root { --container: 1440px; } }
+
 /* ─── base ─── */
 /* luz ambiente quase imperceptível, fixa: dá algo para o vidro desfocar */
 body::before {
@@ -122,7 +134,7 @@ html.is-loading .intro, html.is-loading .split__inner, html.is-loading .route { 
 }
 
 /* ─── hero ─── */
-.hero { min-height: min(100svh, 1000px); flex-direction: column; align-items: stretch; padding-top: calc(var(--nav-h) + var(--space-6)); }
+.hero { min-height: min(calc(100svh / var(--zoom)), 1000px); flex-direction: column; align-items: stretch; padding-top: calc(var(--nav-h) + var(--space-6)); }
 /* grade fina e luz ao fundo, esmaecidas nas bordas */
 .hero::before {
   content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
@@ -637,7 +649,7 @@ a.link-card:hover .link-card__tile { background: var(--text-primary); color: var
 
 /* ═══ acessibilidade: com "reduzir movimento", nada se move — o conteúdo continua inteiro ═══ */
 /* ─── 404: número metálico gigante; o painel de vidro sobe por cima dele e desfoca a parte de baixo ─── */
-.not-found { --nf: clamp(150px, min(38vw, 58svh), 440px); min-height: calc(100svh - 136px); display: flex; align-items: center; padding-bottom: var(--space-6); overflow: hidden; }
+.not-found { --nf: clamp(150px, min(38vw, calc(58svh / var(--zoom))), 440px); min-height: calc(100svh / var(--zoom) - 136px); display: flex; align-items: center; padding-bottom: var(--space-6); overflow: hidden; }
 .not-found__inner { display: flex; flex-direction: column; align-items: center; }
 .not-found__code {
   margin: 0; font-size: var(--nf); font-weight: 500; line-height: 0.9; letter-spacing: -0.05em; padding-right: 0.05em; user-select: none;

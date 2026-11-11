@@ -383,7 +383,7 @@ html.is-loading { overflow: hidden; }
 html.is-loading .rise, html.is-loading .reveal.is-visible { animation-play-state: paused; }
 
 /* ─── página /bio ─── */
-.links-page { max-width: calc(720px + var(--gutter) * 2); margin-inline: auto; padding: 0 var(--gutter); min-height: 100vh; display: flex; flex-direction: column; }
+.links-page { max-width: calc(720px + var(--gutter) * 2); margin-inline: auto; padding: 0 var(--gutter); min-height: calc(100vh / var(--zoom, 1)); display: flex; flex-direction: column; }
 .links-page > main { flex: 1; }
 .links-header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); height: var(--nav-h); }
 .links-header .icon-btn { margin-left: -2px; }
