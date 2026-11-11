@@ -14,7 +14,6 @@ import ContactCard from "../components/ContactCard.jsx";
 import ExperienceList from "../components/ExperienceList.jsx";
 import Reveal from "../components/Reveal.jsx";
 import SplitText from "../components/SplitText.jsx";
-import ScrollWords from "../components/ScrollWords.jsx";
 import BioPortrait from "../components/BioPortrait.jsx";
 import { bioPortrait } from "../data/bio.js";
 import Marquee from "../components/Marquee.jsx";
@@ -63,7 +62,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SOBRE — retrato em moldura de vidro 3D à esquerda; texto que acende ao rolar e fatos à direita */}
+      {/* SOBRE — retrato em moldura de vidro 3D à esquerda; texto e fatos à direita */}
       <section className="section about" id="about" aria-labelledby="about-title">
         <div className="container about__grid">
           <Reveal className="about__photo" variant="scale">
@@ -76,7 +75,7 @@ export default function Home() {
               <span className="label">{t("nav.about")}</span>
             </Reveal>
             <Reveal as="h2" id="about-title" className="h2 about__title"><SplitText text={t("home.aboutTitle")} step={80} /></Reveal>
-            <ScrollWords text={L(site.about.preview)} className="about__statement" />
+            <Reveal as="p" className="about__statement">{L(site.about.preview)}</Reveal>
             <dl className="about__facts">
               {site.facts.map((f, n) => (
                 <Reveal className="about__fact" key={f.id} delay={n * 90}>

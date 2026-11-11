@@ -251,8 +251,6 @@ html.is-loading .intro, html.is-loading .split__inner, html.is-loading .route { 
 .about__photo { position: relative; }
 .about__title { font-size: var(--fs-h2); }
 .about__statement { margin-top: var(--space-5); font-size: clamp(20px, 2vw, 26px); font-weight: 450; letter-spacing: -0.02em; line-height: 1.4; color: var(--text-primary); }
-/* cada palavra acende quando o progresso do parágrafo passa por ela */
-.scroll-words__w { opacity: clamp(0.18, calc((var(--p, 1) - 0.2) * 3.2 * var(--n) - var(--i)), 1); transition: opacity 200ms linear; }
 .about__facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); margin-top: var(--space-7); }
 .about__fact { padding-top: var(--space-4); border-top: 1px solid var(--border-strong); }
 .about__fact dd { margin: 8px 0 0; font-size: 15px; line-height: 1.4; }
@@ -670,7 +668,6 @@ a.link-card:hover .link-card__tile { background: var(--text-primary); color: var
 
 @media (prefers-reduced-motion: reduce) {
   .hero__copy, .hero__object { translate: none !important; opacity: 1 !important; }
-  .scroll-words__w { opacity: 1 !important; }
   .pcard__media { clip-path: none !important; }
   .pcard__media img, .pcard__ph, .prism__sheen, .prism__shadow { transform: none !important; }
   .prism__body { transform: rotateX(4deg) rotateY(-14deg) !important; }
