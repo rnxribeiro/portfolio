@@ -808,9 +808,9 @@ a:hover > .link-card__arrow--ext, a:hover > .link-item__arrow--ext { transform: 
 .float-icon, .service__icon { background: var(--card-2); color: var(--accent); box-shadow: inset 0 0 0 1px var(--line); }
 .cta__icon { background: var(--card-2); color: var(--accent); box-shadow: inset 0 0 0 1px var(--line), 0 0 0 8px var(--card); }
 .hero__photo { box-shadow: 0 0 0 5px var(--card), 0 0 0 6px var(--line); }
-.hero__photo img { filter: invert(0.92) grayscale(1); }
-:root[data-theme="light"] .hero__photo img { filter: grayscale(1); }
-.hero__photo { background: var(--card); }
+/* avatar em traço: sempre com fundo branco, igual nos dois temas */
+.hero__photo { background: #fff; }
+.hero__photo img { filter: grayscale(1); }
 .btn__avatar { filter: grayscale(1); }
 
 /* faixa de stack: destaque neutro */

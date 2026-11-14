@@ -77,7 +77,7 @@ Exemplo (`site.hero.headline`): `"Construindo apps,\n~sites e~ [boas ideias]."`
 - Com "reduzir movimento" ativo no sistema, o conteúdo aparece direto, sem animação.
 
 ## Imagens
-- O avatar em traço do hero (`src/assets/images/renan-avatar.webp`) aparece num círculo com o adesivo do nome (no tema escuro, com as cores invertidas).
+- O avatar em traço do hero (`src/assets/images/renan-avatar.webp`) aparece num círculo branco com o adesivo do nome, igual nos temas claro e escuro.
 - A foto (`src/assets/images/renan-portrait.webp`) aparece no card "Sobre mim" da Home, na página Sobre e no topo da `/bio`.
 
 Coloque os arquivos em `src/assets/{images,setup,projects}`, importe no arquivo de dados
