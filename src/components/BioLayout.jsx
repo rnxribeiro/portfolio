@@ -17,7 +17,7 @@ export default function BioLayout({ back, children }) {
               <ArrowLeft size={16} aria-hidden="true" />
             </Link>
           ) : (
-            <Link to="/" className="nav__brand" aria-label={t("a11y.brand")}>{site.brand}</Link>
+            <Link to="/" className="nav__brand" aria-label={t("a11y.brand")}>{site.brand.toLowerCase()}<span aria-hidden="true">.</span></Link>
           )}
           <ThemeToggle />
         </header>

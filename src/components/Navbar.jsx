@@ -7,19 +7,20 @@ import LangSwitch from "./LangSwitch.jsx";
 import ThemeToggle from "./ThemeToggle.jsx";
 
 const links = [
-  { to: "/projects", key: "nav.projects" },
+  { to: "/", key: "nav.home" },
   { to: "/about", key: "nav.about" },
+  { to: "/projects", key: "nav.projects" },
   { to: "/experience", key: "nav.experience" },
-  { to: "/contact", key: "nav.contact" },
+  { to: "/github", key: "nav.github" },
 ];
 
-// Navbar compacta: marca à esquerda, um fio que liga até os links e as ferramentas (idioma e tema).
-// Um traço curto acompanha o link ativo. No mobile, os links abrem num painel logo abaixo.
+// Navbar em pílula flutuante (centralizada). Um pontinho desliza até o link ativo.
+// Ao rolar, a pílula ganha sombra. No mobile, os links abrem num painel logo abaixo.
 export default function Navbar() {
   const { t, lang } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [mark, setMark] = useState(null);
+  const [dot, setDot] = useState(null);
   const { pathname } = useLocation();
   const listRef = useRef(null);
 
@@ -30,10 +31,11 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // posição do pontinho do link ativo (muda com a rota, o idioma e o tamanho da tela)
   useLayoutEffect(() => {
     const measure = () => {
       const a = listRef.current?.querySelector('a[aria-current="page"]');
-      setMark(a ? { x: a.offsetLeft, w: a.offsetWidth } : null);
+      setDot(a ? a.offsetLeft + a.offsetWidth / 2 : null);
     };
     measure();
     window.addEventListener("resize", measure);
@@ -53,15 +55,19 @@ export default function Navbar() {
   return (
     <header className={`nav${scrolled ? " is-scrolled" : ""}${open ? " is-open" : ""}`}>
       <div className="nav__bar">
-        <Link to="/" className="nav__brand" aria-label={t("a11y.brand")}>{site.brand}</Link>
-        <span className="nav__rule" aria-hidden="true" />
+        <Link to="/" className="nav__brand" aria-label={t("a11y.brand")}>
+          {site.brand.toLowerCase()}<span aria-hidden="true">.</span>
+        </Link>
+
         <nav className="nav__links" aria-label={t("a11y.mainNav")} ref={listRef}>
-          {links.map((l) => <NavLink key={l.key} to={l.to}>{t(l.key)}</NavLink>)}
-          {mark && <span className="nav__mark" aria-hidden="true" style={{ "--x": `${mark.x}px`, "--w": `${mark.w}px` }} />}
+          {links.map((l) => <NavLink key={l.key} to={l.to} end={l.to === "/"}>{t(l.key)}</NavLink>)}
+          {dot !== null && <span className="nav__dot" aria-hidden="true" style={{ "--x": `${dot}px` }} />}
         </nav>
+
         <div className="nav__tools">
           <LangSwitch />
           <ThemeToggle />
+          <Link to="/contact" className="btn btn--dark btn--sm nav__cta">{t("nav.talk")}</Link>
           <button
             type="button"
             className="icon-btn nav__toggle"
@@ -76,7 +82,7 @@ export default function Navbar() {
       </div>
 
       <nav id="mobile-menu" className="nav__sheet" aria-label={t("a11y.mobileNav")} inert={!open}>
-        {[{ to: "/", key: "nav.home" }, ...links].map((l) => (
+        {[...links, { to: "/contact", key: "nav.contact" }].map((l) => (
           <NavLink key={l.key} to={l.to} end={l.to === "/"}>
             {t(l.key)} <ArrowUpRight size={16} aria-hidden="true" />
           </NavLink>
