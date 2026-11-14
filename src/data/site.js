@@ -22,10 +22,23 @@ export const site = {
   cv: "/curriculo-renan-ribeiro.pdf",
 
   hero: {
-    // Selo acima do título (o "Agora" fica na pílula escura). Leva para a página de trajetória.
-    badge: { tag: bi("Agora", "Now"), text: bi("Estagiando no SESI e cursando TI", "Interning at SESI & studying IT"), to: "/experience" },
-    // Título do hero. Marcações: ~texto~ = tom cinza · [texto] = selo verde · *texto* = itálico serifado · \n = quebra de linha
-    headline: bi("Construindo apps,\n~sites e~ [boas ideias].", "Building apps,\n~sites &~ [good ideas]."),
+    // Título do hero (em serifa). Marcações: *texto* = itálico · ~texto~ = cinza · [texto] = selo verde · \n = quebra de linha
+    headline: bi("Construindo apps,\n*sites e boas ideias.*", "Building apps,\n*sites & good ideas.*"),
+    // Cards flutuantes nas laterais do hero (ligados ao centro por linhas finas)
+    cards: [
+      { title: bi("Transformo ideia\nem produto.", "I turn ideas\ninto products."), text: bi("Do rascunho ao deploy, sem enrolação.", "From sketch to deploy, no fluff.") },
+      { title: bi("Código que vira\ncoisa de verdade.", "Code that becomes\nreal things."), text: bi("Apps no ar e código aberto no GitHub.", "Live apps and open code on GitHub.") },
+    ],
+    // Cards de vidro que orbitam o retrato (ícone: app | plug | database)
+    orbit: [
+      { icon: "app", title: "Front-end", text: "React · TypeScript" },
+      { icon: "plug", title: "Back-end", text: "Node.js · APIs" },
+      { icon: "database", title: bi("Dados", "Data"), text: "PostgreSQL" },
+    ],
+    // Cantos de baixo do hero e texto do selo que gira
+    now: bi("Estudando TI na UNIVESP\ne estagiando no SESI.", "Studying IT at UNIVESP\nand interning at SESI."),
+    motto: bi("Menos caos.\nMais código.", "Less chaos.\nMore code."),
+    ring: bi("dev em são paulo · construindo em público · ", "dev in são paulo · building in public · "),
     greeting: bi("Olá, eu sou o", "Hi, I'm"),
     // linha de identidade logo abaixo do nome
     role: bi("Desenvolvedor de Software Jr.", "Jr. Software Developer"),

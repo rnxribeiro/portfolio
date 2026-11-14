@@ -78,8 +78,10 @@ Exemplo (`site.hero.headline`): `"Construindo apps,\n~sites e~ [boas ideias]."`
 - Com "reduzir movimento" ativo no sistema, o conteúdo aparece direto, sem animação.
 
 ## Imagens
-- O avatar em traço do hero (`src/assets/images/renan-avatar.webp`) aparece num círculo branco com o adesivo do nome. Para trocar, substitua o arquivo mantendo o nome, ou aponte `hero.photo` em `src/data/site.js`.
-- A foto (`src/assets/images/renan-portrait.webp`) aparece no card "Sobre mim" da Home, na página Sobre e no topo da `/bio`.
+- **Hero:** `src/assets/images/renan-cutout.webp` é a sua foto recortada (fundo transparente, em P&B), no centro do hero. Os cards de vidro em volta da cabeça usam os textos de `site.hero.orbit` e os prints dos projetos (`src/assets/projects/`). Para trocar a foto, gere outro PNG/WebP com fundo transparente e substitua o arquivo.
+- Os textos do hero (título em serifa, cards laterais, notas dos cantos e o selo que gira) ficam em `site.hero` (`src/data/site.js`): `headline`, `cards`, `orbit`, `now`, `motto` e `ring`.
+- A foto original (`src/assets/images/renan-portrait.webp`) aparece no card "Sobre mim" da Home, na página Sobre e no topo da `/bio`.
+- O avatar em traço (`src/assets/images/renan-avatar.webp`) continua em `hero.photo` (`profilePhoto` em `src/data/bio.js`), hoje fora do hero.
 
 Coloque os arquivos em `src/assets/{images,setup,projects}`, importe no arquivo de dados
 (`import mac from "../assets/setup/macbook.webp"`) e use no campo `image`. Sem imagem, o card mostra um placeholder.
