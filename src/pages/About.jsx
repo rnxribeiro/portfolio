@@ -58,7 +58,6 @@ export default function About() {
               <Reveal as="li" className="chapter" key={s.title["en-US"]} delay={(n % 2) * 90}>
                 <p className="chapter__num">{String(n + 1).padStart(2, "0")} <span>/ {String(site.about.sections.length).padStart(2, "0")}</span></p>
                 <h3>{L(s.title)}</h3>
-                <span className="pcard__bar" aria-hidden="true" />
                 {L(s.text).split("\n").map((line, i) => <p key={i}>{line}</p>)}
               </Reveal>
             ))}

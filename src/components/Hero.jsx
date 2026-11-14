@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ChevronRight, Sparkles } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import { site } from "../data/site.js";
 import { socials, heroSocials } from "../data/socials.js";
 import { useLang } from "../i18n/LanguageContext.jsx";
@@ -36,10 +36,10 @@ export default function Hero({ onNext }) {
 
         <div className="hero__cta intro" style={d(460)}>
           <a className="btn btn--dark" href="#projects" onClick={onNext}>
-            <Sparkles size={15} aria-hidden="true" /> {t("hero.viewProjects")}
+            {t("hero.viewProjects")} <ArrowRight size={15} aria-hidden="true" />
           </a>
           <Link className="btn" to="/contact">
-            <img className="btn__avatar" src={h.photo} alt="" width="22" height="22" /> {t("hero.chat")}
+            {t("hero.chat")}
           </Link>
         </div>
 

@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="pt-BR" data-theme="light">
+<html lang="pt-BR" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#e9e9e7" />
+    <meta name="theme-color" content="#101010" />
     <meta name="description" content="Todos os links do Renan Ribeiro." />
     <meta name="author" content="Renan Ribeiro" />
     <meta name="robots" content="index, follow" />
@@ -25,12 +25,12 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <script>
-      // Tema claro é o padrão; só vira escuro se a pessoa tiver escolhido isso antes. Roda antes do React (sem "flash").
+      // Tema escuro é o padrão; só vira claro se a pessoa tiver escolhido isso antes. Roda antes do React (sem "flash").
       try {
         var d = document.documentElement;
-        var dark = localStorage.getItem("rnx:theme-v2") === "dark";
+        var dark = localStorage.getItem("rnx:theme-v2") !== "light";
         d.dataset.theme = dark ? "dark" : "light";
-        document.querySelector('meta[name="theme-color"]').setAttribute("content", dark ? "#050505" : "#e9e9e7");
+        document.querySelector('meta[name="theme-color"]').setAttribute("content", dark ? "#101010" : "#eae8e3");
       } catch (e) {}
     </script>
     <title>Renan Ribeiro — Links</title>

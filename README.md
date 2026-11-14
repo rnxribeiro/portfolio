@@ -31,33 +31,33 @@ Procure por `TODO` nos arquivos de dados para ver o que ainda precisa do seu con
 - Textos de conteúdo nos arquivos de `src/data/`: use `bi("português", "english")`. Uma string simples vale para os dois idiomas (nomes de produtos, marcas etc.).
 - Para adicionar um terceiro idioma: inclua o código em `LANGS` (`LanguageContext.jsx`), um bloco em `ui.js` e a opção em `LangSwitch.jsx`.
 
-## Visual (redesign minimalista)
-- O site inteiro fica numa **"folha"** arredondada sobre fundo cinza, com linhas-guia finas nas laterais e fios entre as seções (`.sheet` em `src/styles/index.css`).
-- Navbar em **pílula flutuante** com um pontinho embaixo do link ativo e o botão escuro "Bora conversar".
-- Cards brancos com cantos generosos, pílulas, um card escuro de contraste e um único acento verde.
-- Fontes: **Inter** (tudo) + **Instrument Serif itálico** (só para o destaque dos títulos).
-- Todo o design system (cores, sombras, raios, tipografia) está em `src/styles/index.css`, em variáveis no começo do arquivo.
+## Visual (identidade noir)
+- Design editorial minimalista, monocromático e discreto, com influência do design suíço: tipografia como protagonista, divisórias finas, cantos quase retos e nenhuma sombra decorativa.
+- Paleta (variáveis no começo de `src/styles/index.css`): fundo carvão `#101010`, superfícies grafite `#181818`, texto principal `#EAE8E3`, texto secundário `#92908B` e bordas `#303030`.
+- Fontes: **Inter** (textos e títulos) e **IBM Plex Mono** (rótulos, índices de seção, datas, chips e informações auxiliares).
+- Cabeçalhos de seção em grid: índice em mono à esquerda e título à direita. Listas como trajetória, ferramentas e capítulos do Sobre são organizadas por fios finos, no lugar de cards.
+- As imagens ficam em preto e branco e ganham um pouco de cor ao passar o mouse.
+- Animações curtas, só de opacidade e pequenos deslocamentos. Com "reduzir movimento", elas são desligadas.
 
 ### Títulos com marcações
 Títulos e o hero aceitam marcações leves (componente `src/components/Rich.jsx`), tanto em `src/data/` quanto em `src/i18n/ui.js`:
-- `~texto~` → tom cinza (título em dois tons)
-- `[texto]` → selo verde (palavra de destaque)
-- `*texto*` → itálico serifado
+- `~texto~` e `*texto*` → tom cinza (título em dois tons)
+- `[texto]` → palavra de destaque, com um sublinhado fino
 - `\n` → quebra de linha
 
 Exemplo (`site.hero.headline`): `"Construindo apps,\n~sites e~ [boas ideias]."`
 
-## Tema (claro é o padrão, escuro opcional)
-- O tema **claro** é o padrão. O botão de lua/sol alterna para o **escuro** e salva a escolha no navegador (chave `rnx:theme-v2`).
-- Ao trocar, o novo tema "abre" em círculo a partir do botão (View Transitions API). Sem suporte, há uma transição suave de cores; com `prefers-reduced-motion`, a troca é instantânea.
-- Cores ficam em variáveis CSS: `:root` (claro) e `:root[data-theme="dark"]` (escuro) no começo de `src/styles/index.css`. O atributo `data-theme` vem de um script em `index.html` (e `bio/index.html`), que roda antes do React para evitar "flash".
+## Tema (escuro é o padrão, claro opcional)
+- O tema **escuro** (noir) é o padrão. O botão de sol/lua alterna para a variante **clara** (fundo `#EAE8E3`, texto `#101010`, mesma linguagem) e salva a escolha no navegador (chave `rnx:theme-v2`).
+- A troca usa uma transição suave (View Transitions API, com fallback de cores); com `prefers-reduced-motion`, ela é instantânea.
+- Cores ficam em variáveis CSS: `:root` (escuro) e `:root[data-theme="light"]` (claro). O atributo `data-theme` vem de um script em `index.html` (e `bio/index.html`), que roda antes do React para evitar "flash".
 
 ## Contato
 - No fim da Home e da página Sobre há um convite (`ContactCTA`) com o título de `site.contact.cta`.
 - Os botões (`ContactCard`): **Mandar e-mail** (abre o app de e-mail), **Copiar e-mail**, LinkedIn e GitHub. A página `/contact` mostra também o endereço em destaque e todas as redes. O e-mail vem de `site.contact.email`; os links, de `src/data/socials.js`.
 
 ## Página /bio (link na bio do Instagram)
-- Rota `/bio`, independente: não mostra a navbar nem o rodapé globais. Fica numa folha estreita (formato de celular), com o logo (volta para `/`) e o botão de tema. Segue o mesmo tema (claro/escuro) escolhido no site.
+- Rota `/bio`, independente: não mostra a navbar nem o rodapé globais. Fica numa coluna estreita (formato de celular), com o logo (volta para `/`) e o botão de tema. Segue o mesmo tema (claro/escuro) escolhido no site.
 - Estrutura: perfil com redes (o e-mail fica só no bloco de contato do fim) → cards de link (quadrado com ícone, título, descrição e seta) → card do YouTube → Media Kit em formato de pasta → contato (cartão de e-mail).
 - **Setup** e **Livros que indico** são itens da lista e abrem listas exclusivas da `/bio`: `/bio/setup` e `/bio/livros` (não são as páginas do site). Elas têm uma seta no canto superior esquerdo que volta para `/bio`.
 - Tudo vem de `src/data/bio.js`: a lista (`links`, com `enabled`), os cards do fim (`featured`), o card do YouTube (`youtube`) e os textos das listas (`listPages`).
@@ -67,18 +67,18 @@ Exemplo (`site.hero.headline`): `"Construindo apps,\n~sites e~ [boas ideias]."`
 - SEO: o title/description/Open Graph são aplicados ao abrir cada página (`useDocumentMeta`) e `bio/index.html` é uma segunda entrada do Vite com essas tags já no HTML, para quem não executa JavaScript. Em hosts como Vercel/Netlify, `/bio` serve esse arquivo. Para as subpáginas, configure o host para redirecionar para `index.html` (como nas demais rotas).
 
 ## Tela de carregamento
-- Ao abrir o site aparece uma tela simples ("rnx." e uma barra fina) que some com um fade quando as fontes e imagens terminam de carregar, depois de no mínimo ~1s. Não aparece de novo ao trocar de página, nem para quem ativou "reduzir movimento" no sistema.
+- Ao abrir o site aparece uma tela simples ("rnx." e um fio que se preenche) que some com um fade quando as fontes e imagens terminam de carregar, depois de no mínimo ~1s. Não aparece de novo ao trocar de página, nem para quem ativou "reduzir movimento" no sistema.
 - Configuração em `site.splash` (`src/data/site.js`): `enabled`, `minMs`, `maxMs` e `excludePaths` (ex.: `["/bio"]` para a página do link na bio abrir direto). O componente é `src/components/Splash.jsx`.
 
 ## Animações
-- O componente `src/components/Reveal.jsx` faz o conteúdo aparecer (sobe 16px saindo de um leve desfoque) quando entra na tela. Use `<Reveal as="section" delay={90}>…</Reveal>`; `delay` (ms) escalona itens de uma lista.
+- O componente `src/components/Reveal.jsx` faz o conteúdo aparecer (sobe 10px com fade) quando entra na tela. Use `<Reveal as="section" delay={90}>…</Reveal>`; `delay` (ms) escalona itens de uma lista.
 - O topo de cada página entra em sequência com a classe `.intro` + `style={{ "--d": "200ms" }}`.
 - A faixa de stack abaixo do hero (`StackStrip.jsx`) destaca uma ferramenta por vez; a lista fica em `stack.strip` (`src/data/stack.js`) e os logos em `src/components/ToolIcon.jsx` (pacote `simple-icons`).
 - A duração e a curva ficam em `@keyframes rise` em `src/styles/index.css`.
 - Com "reduzir movimento" ativo no sistema, o conteúdo aparece direto, sem animação.
 
 ## Imagens
-- O avatar em traço do hero (`src/assets/images/renan-avatar.webp`) aparece num círculo branco com o adesivo do nome. Para trocar, substitua o arquivo mantendo o nome, ou aponte `hero.photo` em `src/data/site.js`.
+- O avatar em traço do hero (`src/assets/images/renan-avatar.webp`) aparece pequeno, ao lado do nome (no tema escuro, com as cores invertidas). Para trocar, substitua o arquivo mantendo o nome, ou aponte `hero.photo` em `src/data/site.js`.
 - A foto (`src/assets/images/renan-portrait.webp`) aparece no card "Sobre mim" da Home, na página Sobre e no topo da `/bio`.
 
 Coloque os arquivos em `src/assets/{images,setup,projects}`, importe no arquivo de dados

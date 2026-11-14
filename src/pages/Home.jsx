@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, AppWindow, Plug, Database, Smile, Download } from "lucide-react";
+import { ArrowRight, ArrowUpRight, AppWindow, Plug, Database, Download } from "lucide-react";
 import { site } from "../data/site.js";
 import { projects } from "../data/projects.js";
 import { bioPortrait } from "../data/bio.js";
@@ -47,7 +47,6 @@ export default function Home() {
           </Reveal>
 
           <Reveal className="card about__card" delay={100}>
-            <span className="float-icon" aria-hidden="true"><Smile size={20} strokeWidth={1.75} /></span>
             <span className="pill pill--flat">{t("home.aboutTag")}</span>
             <h2 id="about-title" className="h3 about__title"><Rich text={t("home.aboutTitle")} /></h2>
             <p className="about__text">{L(site.about.preview)}</p>

@@ -24,7 +24,6 @@ export default function ProjectCard({ project: p, index = 0, total = 1, delay = 
           </a>
         )}
       </header>
-      <span className="pcard__bar" aria-hidden="true" />
       <p className="pcard__desc">{L(p.description)}</p>
 
       <div className="pcard__foot">

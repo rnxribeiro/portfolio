@@ -1,4 +1,3 @@
-import { Handshake } from "lucide-react";
 import { site } from "../data/site.js";
 import { socials } from "../data/socials.js";
 import { useLang } from "../i18n/LanguageContext.jsx";
@@ -18,7 +17,6 @@ export default function Contact() {
     <div className="page">
       <section className="section section--first" aria-labelledby="contact-h">
         <div className="container contact">
-          <span className="cta__icon intro" style={d(80)} aria-hidden="true"><Handshake size={26} strokeWidth={1.5} /></span>
           <h1 id="contact-h" className="h1 intro" style={d(160)}><Rich text={t("contact.rich")} /></h1>
           <p className="lead intro" style={d(240)}>{L(site.contact.text)}</p>
           <div className="intro" style={d(320)}><ContactCard showEmail /></div>

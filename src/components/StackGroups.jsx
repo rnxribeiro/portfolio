@@ -15,7 +15,6 @@ export default function StackGroups() {
             <h3>{L(g.label)}</h3>
             <span className="tools__count" aria-hidden="true">{String(g.items.length).padStart(2, "0")}</span>
           </header>
-          <span className="pcard__bar" aria-hidden="true" />
           <ul className="tools__list">
             {g.items.map((item) => (
               <li key={item} className="tools__item"><ToolIcon name={item} size={15} />{item}</li>
