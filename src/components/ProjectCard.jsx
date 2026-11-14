@@ -1,29 +1,33 @@
-import { ArrowUpRight, LayoutGrid } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import SocialIcon from "./SocialIcon.jsx";
 import { useLang } from "../i18n/LanguageContext.jsx";
 import Reveal from "./Reveal.jsx";
 
-// Card do bento de projetos: um painel visual discreto (print da interface, ou um ícone quando não há imagem)
-// e as informações ao lado: nome, descrição, tecnologias e links. A seta do canto abre o projeto.
-// O tamanho do card no grid vem do CSS (.projects > :nth-child), formando um bento assimétrico.
-export default function ProjectCard({ project: p, delay = 0 }) {
+// Card de projeto: número, título e seta no topo, barrinha, descrição, tecnologias, links e a imagem embaixo.
+// Projeto sem imagem → card escuro com o nome em tipografia gigante (nada de interface inventada).
+export default function ProjectCard({ project: p, index = 0, total = 1, delay = 0 }) {
   const { t, L } = useLang();
   const ext = { target: "_blank", rel: "noopener noreferrer" };
+  const pad = (n) => String(n).padStart(2, "0");
   const main = p.link || p.github;
 
   return (
-    <Reveal as="article" className="pcard" delay={delay}>
-      <div className={`pcard__visual${p.imageInvert ? " is-inverted" : ""}`}>
-        {p.image ? (
-          <img src={p.image} alt={t("card.shot", { name: p.title })} loading="lazy" decoding="async" />
-        ) : (
-          <span className="pcard__glyph" aria-hidden="true"><LayoutGrid size={30} strokeWidth={1.25} /></span>
+    <Reveal as="article" className={`pcard${p.image ? "" : " pcard--dark"}`} delay={delay}>
+      <header className="pcard__head">
+        <div>
+          <p className="pcard__num">{pad(index + 1)}<span> / {pad(total)}</span> · {L(p.category)}</p>
+          <h3 className="pcard__title">{p.title}</h3>
+        </div>
+        {main && (
+          <a className="pcard__go" href={main} aria-label={p.link ? t("card.view", { name: p.title }) : t("card.code", { name: p.title })} {...ext}>
+            <ArrowUpRight size={18} aria-hidden="true" />
+          </a>
         )}
-      </div>
-      <div className="pcard__body">
-        <p className="pcard__cat">{L(p.category)}</p>
-        <h3 className="pcard__title">{p.title}</h3>
-        <p className="pcard__desc">{L(p.description)}</p>
+      </header>
+      <span className="pcard__bar" aria-hidden="true" />
+      <p className="pcard__desc">{L(p.description)}</p>
+
+      <div className="pcard__foot">
         <ul className="chips" aria-label={t("card.stack")}>
           {p.technologies.map((tech) => <li key={tech} className="chip">{tech}</li>)}
         </ul>
@@ -38,11 +42,14 @@ export default function ProjectCard({ project: p, delay = 0 }) {
           )}
         </div>
       </div>
-      {main && (
-        <a className="pcard__go" href={main} aria-label={p.link ? t("card.view", { name: p.title }) : t("card.code", { name: p.title })} {...ext}>
-          <ArrowUpRight size={16} aria-hidden="true" />
-        </a>
-      )}
+
+      <div className={`pcard__media${p.imageInvert ? " is-inverted" : ""}`}>
+        {p.image ? (
+          <img src={p.image} alt={t("card.shot", { name: p.title })} loading="lazy" decoding="async" />
+        ) : (
+          <span className="pcard__type" aria-hidden="true">{p.title}</span>
+        )}
+      </div>
     </Reveal>
   );
 }

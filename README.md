@@ -12,10 +12,10 @@ npm run build    # produção (pasta dist/)
 
 | Arquivo | Conteúdo |
 | --- | --- |
-| `src/data/site.js` | nome, rótulo, título e texto do hero, caminho do currículo (`cv`), textos do About (título e áreas de atuação da Home), e-mail e convite de contato |
+| `src/data/site.js` | nome, selo e título do hero, tagline, foto, "O que eu faço" (`services`), caminho do currículo (`cv`), textos do About, e-mail e convite de contato |
 | `src/data/bio.js` | página `/bio` (link na bio): lista numerada (itens com `enabled`), blocos de destaque (RNX Mode, Setup) |
 | `src/data/books.js` | livros indicados (carrossel da `/bio`) |
-| `src/data/stack.js` | ferramentas por grupo: card "Ferramentas" da Home e lista da página Sobre |
+| `src/data/stack.js` | ferramentas por grupo (página Sobre) e `strip`: os logos da faixa abaixo do hero |
 | `src/data/experience.js` | "Trajetória" em cards. A Home mostra a versão resumida (`highlights`, com ✓) e a página `/experience` mostra a completa (`details`). Cada item tem `location` e aceita `tags` |
 | `src/data/projects.js` | projetos (`featured` → Home; `imageInvert` inverte imagens de fundo branco no card) |
 | `src/data/setup.js` | itens do setup (`setupItems`) e "Outros itens" (`otherItems`): aparecem só na página `/bio/setup` (o site principal não tem mais página de Setup) |
@@ -31,17 +31,20 @@ Procure por `TODO` nos arquivos de dados para ver o que ainda precisa do seu con
 - Textos de conteúdo nos arquivos de `src/data/`: use `bi("português", "english")`. Uma string simples vale para os dois idiomas (nomes de produtos, marcas etc.).
 - Para adicionar um terceiro idioma: inclua o código em `LANGS` (`LanguageContext.jsx`), um bloco em `ui.js` e a opção em `LangSwitch.jsx`.
 
-## Visual (dark minimalism / bento grid)
-- Fundo quase preto, cards grafite com borda fina, cantos de 12px, tipografia leve (Inter) e bastante espaço negativo.
-- Paleta em variáveis no começo de `src/styles/index.css`: fundo `#09090B`, cards `#18181B` / `#202023`, bordas `#29292D`, texto `#F4F4F5`, secundário `#929298`, detalhes `#A1A1AA`.
-- Home: hero sem fotos (com um arco abstrato só em CSS) → projetos em bento grid assimétrico → "Sobre mim" em três colunas → Experiência & Skills (trajetória, ferramentas e GitHub em cards) → contato → rodapé enxuto.
-- O tamanho de cada card de projeto no grid vem do CSS (`.projects > :nth-child`): largos (7/12) com a imagem ao lado e estreitos (5/12) com a imagem em cima.
+## Visual (layout em folha + estética dark minimalism)
+- Layout: o site fica numa "folha" com seções em blocos — hero centralizado com avatar, adesivo do nome e selo "Agora", faixa de logos da stack, "Sobre mim" (foto + card), "O que eu faço", projetos em grid, trajetória, GitHub, convite de contato e rodapé em colunas.
+- Estética: paleta zinc (fundo `#09090B`, cards `#18181B` / `#202023`, bordas `#29292D`, texto `#F4F4F5` / `#929298`, detalhes `#A1A1AA`), bordas finas no lugar de sombras, cantos de 10–14px nos cards, Inter em pesos leves e nenhuma cor vibrante.
+- Tokens no começo de `src/styles/index.css`; a camada "estética nova" no fim do arquivo ajusta o que os tokens sozinhos não cobrem.
+- Imagens de projetos ficam em preto e branco (cor discreta no hover). `imageInvert: true` em `src/data/projects.js` inverte imagens de fundo branco para combinar com o card escuro.
 
 ### Títulos com marcações
-Títulos aceitam marcações leves (componente `src/components/Rich.jsx`), em `src/data/` e `src/i18n/ui.js`:
+Títulos e o hero aceitam marcações leves (componente `src/components/Rich.jsx`), em `src/data/` e `src/i18n/ui.js`:
 - `~texto~` → tom cinza (título em dois tons)
-- `*texto*` → itálico em cinza
+- `[texto]` → palavra em destaque, num selo com borda fina
+- `*texto*` → itálico leve
 - `\n` → quebra de linha
+
+Exemplo (`site.hero.headline`): `"Construindo apps,\n~sites e~ [boas ideias]."`
 
 ## Tema (escuro é o padrão, claro opcional)
 - O tema **escuro** é o padrão. O botão de sol/lua alterna para o **claro** e salva a escolha no navegador (chave `rnx:theme-v2`).
@@ -63,16 +66,18 @@ Títulos aceitam marcações leves (componente `src/components/Rich.jsx`), em `s
 - SEO: o title/description/Open Graph são aplicados ao abrir cada página (`useDocumentMeta`) e `bio/index.html` é uma segunda entrada do Vite com essas tags já no HTML, para quem não executa JavaScript. Em hosts como Vercel/Netlify, `/bio` serve esse arquivo. Para as subpáginas, configure o host para redirecionar para `index.html` (como nas demais rotas).
 
 ## Tela de carregamento
-- Ao abrir o site aparece uma tela simples ("RNX" e um fio que se preenche) que some com um fade quando as fontes e imagens terminam de carregar, depois de no mínimo ~1s. Não aparece de novo ao trocar de página, nem para quem ativou "reduzir movimento" no sistema.
+- Ao abrir o site aparece uma tela simples ("rnx." e uma barra fina) que some com um fade quando as fontes e imagens terminam de carregar, depois de no mínimo ~1s. Não aparece de novo ao trocar de página, nem para quem ativou "reduzir movimento" no sistema.
 - Configuração em `site.splash` (`src/data/site.js`): `enabled`, `minMs`, `maxMs` e `excludePaths` (ex.: `["/bio"]` para a página do link na bio abrir direto). O componente é `src/components/Splash.jsx`.
 
 ## Animações
-- O componente `src/components/Reveal.jsx` faz o conteúdo aparecer (fade + subida de 12px) quando entra na tela. Use `<Reveal as="section" delay={90}>…</Reveal>`; `delay` (ms) escalona itens de uma lista.
+- O componente `src/components/Reveal.jsx` faz o conteúdo aparecer (sobe 16px saindo de um leve desfoque) quando entra na tela.
+- A faixa de stack abaixo do hero (`StackStrip.jsx`) destaca uma ferramenta por vez; a lista fica em `stack.strip` (`src/data/stack.js`) e os logos em `src/components/ToolIcon.jsx` (pacote `simple-icons`). Use `<Reveal as="section" delay={90}>…</Reveal>`; `delay` (ms) escalona itens de uma lista.
 - O topo de cada página entra em sequência com a classe `.intro` + `style={{ "--d": "200ms" }}`.
 - A duração e a curva ficam em `@keyframes rise` em `src/styles/index.css`.
 - Com "reduzir movimento" ativo no sistema, o conteúdo aparece direto, sem animação.
 
 ## Imagens
+- O avatar em traço do hero (`src/assets/images/renan-avatar.webp`) aparece num círculo com o adesivo do nome (no tema escuro, com as cores invertidas).
 - A foto (`src/assets/images/renan-portrait.webp`) aparece no card "Sobre mim" da Home, na página Sobre e no topo da `/bio`.
 
 Coloque os arquivos em `src/assets/{images,setup,projects}`, importe no arquivo de dados

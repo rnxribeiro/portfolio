@@ -7,6 +7,8 @@ import { bi } from "../i18n/bi.js";
 
 export const stack = {
   label: "Stack",
+  // Faixa de logos logo abaixo do hero (só ferramentas com ícone em components/ToolIcon.jsx).
+  strip: ["React", "TypeScript", "JavaScript", "Next.js", "Node.js", "PostgreSQL", "Tailwind CSS", "Vite"],
   title: bi("Ferramentas do dia a dia", "Everyday tools"),
   groups: [
     { label: bi("Linguagens", "Languages"), items: ["HTML", "CSS", "JavaScript", "TypeScript"] },
