@@ -17,6 +17,3 @@ export const socials = [
 // Usado no hero e no footer (além das redes acima, o e-mail aparece no footer).
 export const heroSocials = ["GitHub", "LinkedIn", "Instagram", "YouTube"];
 
-// Ícones da página /bio (embaixo do nome). O e-mail fica só na área de contato, no fim da página.
-// Para mostrar o TikTok também no hero/contato, inclua "TikTok" na lista heroSocials acima.
-export const bioSocials = ["GitHub", "LinkedIn", "Instagram", "YouTube", "TikTok"];

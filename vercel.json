@@ -1,8 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
-    { "source": "/bio", "destination": "/bio/index.html" },
-    { "source": "/bio/:path*", "destination": "/bio/index.html" },
     { "source": "/((?!assets/|.*\\.[a-z0-9]+$).*)", "destination": "/index.html" }
   ],
   "headers": [

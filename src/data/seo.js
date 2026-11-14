@@ -1,6 +1,5 @@
 // ──────────────────────────────────────────────────────────────
 // RNX · SEO — título (aba do navegador / Google) e descrição de cada página do portfólio.
-// As páginas da /bio definem os seus em src/data/bio.js (listPages) e nos próprios arquivos.
 // Mantenha os títulos curtos (até ~60 caracteres) e as descrições entre ~120 e 160 caracteres.
 // ──────────────────────────────────────────────────────────────
 import { bi } from "../i18n/bi.js";

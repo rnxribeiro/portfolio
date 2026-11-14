@@ -5,6 +5,7 @@
 // ──────────────────────────────────────────────────────────────
 import { bi } from "../i18n/bi.js";
 import heroPhoto from "../assets/images/renan-avatar.webp";
+import portrait from "../assets/images/renan-portrait.webp";
 
 export const site = {
   brand: "RNX",
@@ -14,7 +15,7 @@ export const site = {
 
   // Tela de carregamento (RNX + barra fina) que aparece ao abrir o site.
   // enabled: false desliga | minMs: tempo mínimo na tela | maxMs: limite caso o carregamento demore
-  // excludePaths: rotas que não mostram a tela (ex.: ["/bio"] para a página do link na bio abrir direto)
+  // excludePaths: rotas que não mostram a tela
   splash: { enabled: true, minMs: 1000, maxMs: 3000, excludePaths: [] },
 
   // Currículo em PDF: coloque o arquivo em /public (ex.: "/curriculo-renan.pdf") e preencha aqui.
@@ -45,6 +46,9 @@ export const site = {
     { icon: "plug", title: bi("APIs e integrações", "APIs & integrations"), text: bi("Sistemas conversando entre si com Node.js e APIs REST.", "Systems talking to each other with Node.js and REST APIs.") },
     { icon: "database", title: bi("Dados e arquitetura", "Data & architecture"), text: bi("Banco de dados bem modelado com PostgreSQL, pensando na estrutura antes do código.", "Well-modeled databases with PostgreSQL, thinking about structure before code.") },
   ],
+
+  // Foto do card "Sobre mim" (Home) e da página Sobre. Troque a imagem em src/assets/images/renan-portrait.webp.
+  portrait: { src: portrait, place: bi("São Paulo, Brasil", "São Paulo, Brazil") },
 
   // Metadados curtos (prévia do About na Home e página About).
   facts: [

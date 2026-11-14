@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, AppWindow, Plug, Database, Smile, Download } from "lucide-react";
 import { site } from "../data/site.js";
 import { projects } from "../data/projects.js";
-import { bioPortrait } from "../data/bio.js";
 import { useLang } from "../i18n/LanguageContext.jsx";
 import { useDocumentMeta } from "../hooks/useDocumentMeta.js";
 import { seo } from "../data/seo.js";
@@ -38,8 +37,8 @@ export default function Home() {
       <section className="section" id="about" aria-labelledby="about-title">
         <div className="container about">
           <Reveal className="portrait">
-            <img src={bioPortrait.src} alt={t("links.avatarAlt")} loading="lazy" decoding="async" />
-            <span className="portrait__chip"><span className="dot" aria-hidden="true" />{L(bioPortrait.place)}</span>
+            <img src={site.portrait.src} alt={t("links.avatarAlt")} loading="lazy" decoding="async" />
+            <span className="portrait__chip"><span className="dot" aria-hidden="true" />{L(site.portrait.place)}</span>
             <span className="portrait__name">
               <strong>{site.name}</strong>
               <span>{L(site.hero.role)}</span>
