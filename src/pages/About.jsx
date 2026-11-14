@@ -6,7 +6,6 @@ import StackGroups from "../components/StackGroups.jsx";
 import SectionHeader from "../components/SectionHeader.jsx";
 import ContactCTA from "../components/ContactCTA.jsx";
 import { site } from "../data/site.js";
-import { bioPortrait } from "../data/bio.js";
 import { useLang } from "../i18n/LanguageContext.jsx";
 import { useDocumentMeta } from "../hooks/useDocumentMeta.js";
 import { seo } from "../data/seo.js";
@@ -40,8 +39,8 @@ export default function About() {
             </div>
           </div>
           <div className="portrait intro" style={d(200)}>
-            <img src={bioPortrait.src} alt={t("links.avatarAlt")} fetchPriority="high" />
-            <span className="portrait__chip"><span className="dot" aria-hidden="true" />{L(bioPortrait.place)}</span>
+            <img src={site.portrait.src} alt={t("links.avatarAlt")} fetchPriority="high" />
+            <span className="portrait__chip"><span className="dot" aria-hidden="true" />{L(site.portrait.place)}</span>
             <span className="portrait__name">
               <strong>{site.name}</strong>
               <span>{L(site.hero.role)}</span>

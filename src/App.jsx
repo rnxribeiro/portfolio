@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import ScrollManager from "./components/ScrollManager.jsx";
@@ -8,20 +8,13 @@ import About from "./pages/About.jsx";
 import Projects from "./pages/Projects.jsx";
 import Github from "./pages/Github.jsx";
 import Experience from "./pages/Experience.jsx";
-import BioMediaKit from "./pages/BioMediaKit.jsx";
 import Contact from "./pages/Contact.jsx";
-import Bio from "./pages/Bio.jsx";
-import BioSetup from "./pages/BioSetup.jsx";
-import BioBooks from "./pages/BioBooks.jsx";
 import NotFound from "./pages/NotFound.jsx";
-import { useLang, FixedLanguage } from "./i18n/LanguageContext.jsx";
+import { useLang } from "./i18n/LanguageContext.jsx";
 
 export default function App() {
   const { t } = useLang();
-  // /bio e suas subpáginas são independentes (link na bio do Instagram): sem navbar/footer globais
-  // e sempre em pt-BR (ver BioLayout).
   const { pathname } = useLocation();
-  const bare = pathname === "/bio" || pathname.startsWith("/bio/");
 
   // a chave por rota faz cada página entrar com a própria transição
   const routes = (
@@ -32,13 +25,7 @@ export default function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/experience" element={<Experience />} />
         <Route path="/github" element={<Github />} />
-        {/* o Media Kit mora só dentro da /bio; o endereço antigo leva para lá */}
-        <Route path="/media-kit" element={<Navigate to="/bio/media-kit" replace />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/bio" element={<Bio />} />
-        <Route path="/bio/setup" element={<BioSetup />} />
-        <Route path="/bio/livros" element={<BioBooks />} />
-        <Route path="/bio/media-kit" element={<BioMediaKit />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
@@ -49,16 +36,12 @@ export default function App() {
       <a className="skip-link" href="#main">{t("a11y.skip")}</a>
       <Splash />
       <ScrollManager />
-      {bare ? (
-        <FixedLanguage lang="pt-BR">{routes}</FixedLanguage>
-      ) : (
-        // a "folha": o site inteiro fica num painel arredondado sobre o fundo cinza, com linhas-guia nas laterais
-        <div className="sheet">
-          <Navbar />
-          <main id="main">{routes}</main>
-          <Footer />
-        </div>
-      )}
+      {/* a "folha": o site inteiro fica num painel arredondado sobre o fundo, com linhas-guia nas laterais */}
+      <div className="sheet">
+        <Navbar />
+        <main id="main">{routes}</main>
+        <Footer />
+      </div>
     </>
   );
 }

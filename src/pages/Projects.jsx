@@ -30,7 +30,8 @@ export default function Projects() {
           <Reveal className="filters">
             <FilterBar options={options} value={cat} onChange={setCat} label={t("projects.filter")} />
           </Reveal>
-          <div className="projects" aria-label={t("projects.list")}>
+          <h2 className="sr-only">{t("projects.list")}</h2>
+          <div className="projects">
             {list.map((p, n) => <ProjectCard key={p.id} project={p} index={n} total={list.length} delay={(n % 2) * 100} />)}
           </div>
         </div>

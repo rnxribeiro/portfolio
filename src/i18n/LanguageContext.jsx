@@ -41,25 +41,3 @@ export function LanguageProvider({ children }) {
 }
 
 export const useLang = () => useContext(Ctx);
-
-// Idioma fixo para um trecho do app (ex.: as páginas /bio, sempre em pt-BR). Não grava a escolha no navegador
-// e, ao sair, devolve o atributo lang da página ao idioma que a pessoa usa no resto do site.
-export function FixedLanguage({ lang, children }) {
-  const outer = useContext(Ctx);
-  useEffect(() => {
-    const previous = document.documentElement.lang;
-    // depois do provedor de fora, que também define o lang da página no mesmo ciclo
-    queueMicrotask(() => { document.documentElement.lang = lang; });
-    return () => { document.documentElement.lang = previous; };
-  }, [lang]);
-  const value = useMemo(() => {
-    const L = (v) => (v && typeof v === "object" ? v[lang] ?? v["pt-BR"] : v);
-    const t = (key, vars) => {
-      let s = ui[lang][key] ?? ui["pt-BR"][key] ?? key;
-      if (vars) for (const k of Object.keys(vars)) s = s.replaceAll(`{${k}}`, vars[k]);
-      return s;
-    };
-    return { lang, setLang: outer?.setLang ?? (() => {}), L, t };
-  }, [lang, outer]);
-  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
-}

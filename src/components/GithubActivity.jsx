@@ -64,7 +64,7 @@ export default function GithubActivity({ showRepos = true, showGrid = true, week
 
       {showGrid && (
         <Reveal className="heat">
-          <div className="heat__scroll" ref={scrollRef}>
+          <div className="heat__scroll" ref={scrollRef} tabIndex={0} role="region" aria-label={t("gh.gridLabel")}>
             <div className="heat__grid" role="img" aria-label={t("gh.gridLabel")}>
               {cells.map((c, i) => (
                 <span key={c.key} className="heat__cell" data-l={level(c.n)} title={`${c.key}: ${c.n}`} style={{ "--c": Math.floor(i / 7) }} />
@@ -84,7 +84,7 @@ export default function GithubActivity({ showRepos = true, showGrid = true, week
 
       {showRepos && (
         <div className="repos">
-          <h3 className="repos__title">{t("gh.featured")}</h3>
+          <h2 className="repos__title">{t("gh.featured")}</h2>
           <div className="repos__grid">
             {featured.map((r, n) => (
               <Reveal as="a" key={r.name} className="repo-card" href={r.url} target="_blank" rel="noopener noreferrer" delay={n * 80}>

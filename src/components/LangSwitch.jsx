@@ -15,10 +15,9 @@ export default function LangSwitch() {
           type="button"
           lang={o.code}
           aria-pressed={lang === o.code}
-          aria-label={t(o.labelKey)}
           onClick={() => setLang(o.code)}
         >
-          {o.short}
+          {o.short}<span className="sr-only"> — {t(o.labelKey)}</span>
         </button>
       ))}
     </div>
