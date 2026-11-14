@@ -17,7 +17,7 @@ export const ui = {
     "common.sendMessage": "Enviar mensagem", "common.backToTop": "Voltar ao topo", "common.email": "E-mail",
     "common.items": "{n} itens", "common.item": "{n} item", "common.all": "Todos",
 
-    "footer.role": "Desenvolvedor · Criador · Estudante", "footer.built": "Feito com React.",
+    "footer.role": "Desenvolvedor · Criador · Estudante", "footer.built": "Feito com React.", "footer.rights": "Todos os direitos reservados.",
 
     "hero.photoEmpty": "Espaço reservado para sua foto",
     "hero.viewProjects": "Ver projetos", "hero.viewCv": "Ver currículo",
@@ -72,6 +72,8 @@ export const ui = {
     "projects.rich": "Coisas que eu *construí*.", "exp.rich": "Por onde eu *passei*.", "gh.rich": "Construindo em *público*.",
     "contact.rich": "Bora *conversar*?", "contact.or": "ou me encontre por aí",
     "footer.tagline": "Dev em São Paulo, construindo coisas legais na internet.", "footer.pages": "Páginas", "footer.social": "Redes",
+    "home.projectsLabel": "Projetos selecionados", "home.aboutLabel": "Sobre mim", "home.expSkills": "Experiência & Skills",
+    "home.skills": "Ferramentas", "home.contactLabel": "Contato", "home.contactCta": "Fale comigo", "hero.explore": "Explorar projetos",
     "contact.online": "Me encontre online",
     "nav.experience": "Trajetória",
     "home.expLabel": "Trajetória", "home.expTitle": "Trajetória", "home.expSub": "Trabalho, estudo e o que aprendi em cada um.", "home.expMore": "Ver trajetória completa",
@@ -97,7 +99,7 @@ export const ui = {
     "common.sendMessage": "Send message", "common.backToTop": "Back to top", "common.email": "Email",
     "common.items": "{n} items", "common.item": "{n} item", "common.all": "All",
 
-    "footer.role": "Developer · Creator · Student", "footer.built": "Built with React.",
+    "footer.role": "Developer · Creator · Student", "footer.built": "Built with React.", "footer.rights": "All rights reserved.",
 
     "hero.photoEmpty": "Space reserved for your photo",
     "hero.viewProjects": "View projects", "hero.viewCv": "View résumé",
@@ -152,6 +154,8 @@ export const ui = {
     "projects.rich": "Things I've *built*.", "exp.rich": "Where I've *been*.", "gh.rich": "Building in *public*.",
     "contact.rich": "Let's *talk*?", "contact.or": "or find me around",
     "footer.tagline": "Dev from São Paulo, building nice things on the internet.", "footer.pages": "Pages", "footer.social": "Social",
+    "home.projectsLabel": "Selected projects", "home.aboutLabel": "About me", "home.expSkills": "Experience & Skills",
+    "home.skills": "Toolkit", "home.contactLabel": "Get in touch", "home.contactCta": "Contact me", "hero.explore": "Explore my work",
     "contact.online": "Find me online",
     "nav.experience": "Experience",
     "home.expLabel": "Experience", "home.expTitle": "Experience", "home.expSub": "Work, study and what I learned from each.", "home.expMore": "See full experience",

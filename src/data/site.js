@@ -22,29 +22,20 @@ export const site = {
   cv: "/curriculo-renan-ribeiro.pdf",
 
   hero: {
-    // Selo acima do título (o "Agora" fica na pílula escura). Leva para a página de trajetória.
-    badge: { tag: bi("Agora", "Now"), text: bi("Estagiando no SESI e cursando TI", "Interning at SESI & studying IT"), to: "/experience" },
-    // Título do hero. Marcações: ~texto~ = tom cinza · [texto] = selo verde · *texto* = itálico serifado · \n = quebra de linha
-    headline: bi("Construindo apps,\n~sites e~ [boas ideias].", "Building apps,\n~sites &~ [good ideas]."),
-    greeting: bi("Olá, eu sou o", "Hi, I'm"),
+    // Hero: rótulo pequeno, título (marcações: ~texto~ = cinza · *texto* = itálico · \n = quebra), texto e botão.
+    label: bi("Engenheiro de software", "Software engineer"),
+    headline: bi("Construindo experiências\n~digitais melhores.~", "Building better\n~digital experiences.~"),
+    intro: bi(
+      "Sou Renan Ribeiro, desenvolvedor de software focado em criar aplicações web modernas, resolver problemas reais e construir produtos digitais com propósito.",
+      "I'm Renan Ribeiro, a Software Developer focused on creating modern web applications, solving real-world problems and building meaningful digital products."
+    ),
     // linha de identidade logo abaixo do nome
     role: bi("Desenvolvedor de Software Jr.", "Jr. Software Developer"),
-    tagline: bi(
-      "Oi! Sou o Renan, dev em São Paulo. Curto pegar uma ideia solta e transformar em algo que funciona de verdade.",
-      "Hey! I'm Renan, a dev from São Paulo. I like taking a loose idea and turning it into something that actually works."
-    ),
     // Avatar em traço (line art) do Renan, igual nos temas claro e escuro (traço preto, preenchimento branco,
     // fundo transparente). Para trocar, substitua src/assets/images/renan-avatar.webp ou aponte outro aqui. Com photo: null o espaço fica reservado.
     photo: heroPhoto,
     photoAlt: bi("Ilustração de Renan Ribeiro", "Illustration of Renan Ribeiro"),
   },
-
-  // "O que eu faço" (Home): três cards. icon: app | plug | database
-  services: [
-    { icon: "app", title: bi("Aplicações web", "Web apps"), text: bi("Interfaces rápidas e caprichadas com React e TypeScript, do layout ao deploy.", "Fast, polished interfaces with React and TypeScript, from layout to deploy.") },
-    { icon: "plug", title: bi("APIs e integrações", "APIs & integrations"), text: bi("Sistemas conversando entre si com Node.js e APIs REST.", "Systems talking to each other with Node.js and REST APIs.") },
-    { icon: "database", title: bi("Dados e arquitetura", "Data & architecture"), text: bi("Banco de dados bem modelado com PostgreSQL, pensando na estrutura antes do código.", "Well-modeled databases with PostgreSQL, thinking about structure before code.") },
-  ],
 
   // Metadados curtos (prévia do About na Home e página About).
   facts: [
@@ -54,6 +45,15 @@ export const site = {
   ],
 
   about: {
+    // Título da seção "Sobre mim" da Home e áreas de atuação (lista numerada ao lado)
+    headline: bi("Acredito em código limpo, soluções simples e visão de *longo prazo.*", "I believe in clean code, simple solutions and long-term *thinking.*"),
+    areas: [
+      bi("Desenvolvimento Front-end", "Front-end Development"),
+      bi("Desenvolvimento Full-Stack", "Full-Stack Development"),
+      bi("Engenharia de Software", "Software Engineering"),
+      "UI/UX",
+      bi("Modelagem de Banco de Dados", "Database Design"),
+    ],
     preview: bi(
       "Estudo Tecnologia da Informação e passo boa parte do tempo construindo coisas: apps, integrações e projetos pessoais. Gosto de testar ferramentas novas, entender como os sistemas funcionam por dentro e transformar ideia em produto.",
       "I study Information Technology and spend a good part of my time building things: apps, integrations and side projects. I like trying new tools, understanding how systems work under the hood and turning ideas into products."
@@ -84,7 +84,7 @@ export const site = {
     email: "rnxribeiro@gmail.com",
     headline: bi("Vamos conversar.", "Let's talk."),
     // Título do convite de contato (fim da Home e da página Sobre). Mesmas marcações do hero.
-    cta: bi("Tem uma ideia?\n~Bora tirar do papel.~", "Got an idea?\n~Let's make it real.~"),
+    cta: bi("Vamos construir algo\n~incrível juntos.~", "Let's build something\n~great together.~"),
     text: bi("Projeto, vaga, colaboração ou só um papo: me chama que eu respondo.", "A project, a job, a collab or just a chat: drop me a line and I'll reply."),
     subject: bi("Contato pelo site RNX", "Message from the RNX site"),
   },

@@ -11,7 +11,8 @@ import ourPlan from "../assets/projects/ourplan.webp";
 // image  → importe de src/assets/projects/ ou deixe null (mostra um placeholder)
 // link   → live demo ("" quando ainda não existe)
 // github → repositório ("" quando ainda não existe)
-// featured → aparece em "Selected Projects" na Home
+// featured → aparece em "Projetos selecionados" na Home
+// imageInvert → inverte as cores da imagem no card (útil para imagens de fundo branco)
 // ──────────────────────────────────────────────────────────────
 
 export const projects = [
@@ -48,6 +49,7 @@ export const projects = [
       "Financial planning and management platform for couples: shared expenses, joint goals and the couple's financial progress."
     ),
     image: ourPlan,
+    imageInvert: true, // logo claro sobre fundo branco: invertido para combinar com o card escuro
     technologies: ["React", "Node.js", "PostgreSQL"],
     category: bi("Finanças", "Finance"),
     link: "",
