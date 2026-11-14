@@ -44,7 +44,7 @@ export default function Bio() {
       </section>
 
       {(youtube.enabled || blocks.length > 0 || mediaKitFolder.enabled) && (
-        <section className="links-section links-featured" aria-label={t("links.title")}>
+        <section className="links-section links-featured" aria-label="Destaques">
           {youtube.enabled && <YoutubeCard delay={base} />}
           {blocks.map((f, n) => <FeaturedLink key={f.id} item={f} delay={base + 80 + n * 80} />)}
           {mediaKitFolder.enabled && <MediaKitCard {...mediaKitFolder} delay={base + 160} />}

@@ -13,6 +13,7 @@ export default function Experience() {
       <section className="section section--first" aria-labelledby="exp-h">
         <div className="container container--narrow">
           <SectionHeader page as="h1" id="exp-h" tag={t("home.expLabel")} title={t("exp.rich")} sub={t("home.expSub")} />
+          <h2 className="sr-only">{t("home.expTitle")}</h2>
           <ExperienceList detailed />
         </div>
       </section>

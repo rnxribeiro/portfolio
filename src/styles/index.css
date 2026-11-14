@@ -14,7 +14,7 @@
   --card-2: #202023;          /* cards secundários, chips, trilhos */
   --ink: #f4f4f5;             /* texto principal */
   --ink-2: #929298;           /* texto secundário */
-  --ink-3: #85858c;           /* rótulos (contraste AA em texto pequeno) */
+  --ink-3: #909097;           /* rótulos (contraste AA em texto pequeno, também sobre os cards) */
   --soft: #6f6f76;            /* segunda metade dos títulos em dois tons */
   --line: #29292d;            /* bordas */
   --line-2: #34343a;          /* bordas no hover */
@@ -440,7 +440,7 @@ html.is-loading .intro, html.is-loading .rise, html.is-loading .reveal.is-visibl
 .pcard:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg), inset 0 0 0 1px var(--line); }
 .pcard__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
 .pcard__num { font-size: 12.5px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-.pcard__num span { color: var(--soft); }
+.pcard__num span { color: var(--ink-3); }
 .pcard__title { margin-top: 6px; font-size: 24px; font-weight: 600; letter-spacing: -0.035em; line-height: 1.15; }
 .pcard__go {
   flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
@@ -578,7 +578,7 @@ html.is-loading .intro, html.is-loading .rise, html.is-loading .reveal.is-visibl
 .chapters { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 .chapter { padding: 28px; border-radius: var(--r-lg); background: var(--card); box-shadow: var(--shadow-sm), inset 0 0 0 1px var(--line); }
 .chapter__num { font-size: 12.5px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-.chapter__num span { color: var(--soft); }
+.chapter__num span { color: var(--ink-3); }
 .chapter h3 { margin-top: 6px; font-size: 22px; font-weight: 600; letter-spacing: -0.03em; }
 .chapter p:not(.chapter__num) { color: var(--ink-2); font-size: 15px; line-height: 1.7; }
 .chapter p + p { margin-top: 10px; }
@@ -651,7 +651,7 @@ html.is-loading .intro, html.is-loading .rise, html.is-loading .reveal.is-visibl
 
 .links-section { margin-top: 28px; }
 .links-section__label { display: flex; align-items: center; gap: 8px; margin: 0 4px 12px; font-size: 13px; font-weight: 500; color: var(--ink-3); }
-.bio-group__count { color: var(--soft); font-variant-numeric: tabular-nums; }
+.bio-group__count { color: var(--ink-3); font-variant-numeric: tabular-nums; }
 .link-cards, .link-list { display: grid; gap: 10px; }
 .link-card, .link-item {
   display: flex; align-items: center; gap: 14px; padding: 12px 16px 12px 12px; border-radius: var(--r);
@@ -723,9 +723,9 @@ a:hover > .link-card__arrow--ext, a:hover > .link-item__arrow--ext { transform: 
 .mk:hover .mk__sheet--1 { transform: rotate(6deg) translateX(6px); }
 .mk__sheet-brand { font-size: 13px; font-weight: 700; letter-spacing: -0.02em; }
 .mk__sheet-title { font-size: 15px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
-.mk__sheet-year { font-size: 10px; opacity: 0.55; }
+.mk__sheet-year { font-size: 10px; color: var(--ink-3); }
 .mk__body { display: grid; gap: 8px; }
-.mk__body .label { color: color-mix(in srgb, currentColor 55%, transparent); }
+.mk__body .label { color: var(--ink-3); }
 .mk__title { font-size: 24px; font-weight: 600; letter-spacing: -0.04em; line-height: 1; }
 .mk__topics { display: flex; flex-wrap: wrap; gap: 5px; }
 .mk__topic { padding: 3px 9px; border-radius: 999px; background: color-mix(in srgb, currentColor 10%, transparent); font-size: 11.5px; }
