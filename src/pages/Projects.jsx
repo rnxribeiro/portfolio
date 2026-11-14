@@ -5,6 +5,7 @@ import { useDocumentMeta } from "../hooks/useDocumentMeta.js";
 import { seo } from "../data/seo.js";
 import ProjectCard from "../components/ProjectCard.jsx";
 import FilterBar from "../components/FilterBar.jsx";
+import SectionHeader from "../components/SectionHeader.jsx";
 import Reveal from "../components/Reveal.jsx";
 
 export default function Projects() {
@@ -23,20 +24,14 @@ export default function Projects() {
 
   return (
     <div className="page">
-      <section className="section section--tight" aria-labelledby="projects-h">
-        <Reveal className="container">
-          <span className="label section-header__index">02 — {t("nav.projects")}</span>
-          <h1 id="projects-h" className="h1">{t("projects.title")}</h1>
-          <p className="lead" style={{ marginTop: "var(--space-4)" }}>{t("projects.sub")}</p>
-          <div style={{ marginTop: "var(--space-7)" }}>
-            <FilterBar options={options} value={cat} onChange={setCat} label={t("projects.filter")} />
-          </div>
-        </Reveal>
-      </section>
-      <section className="section--tight" style={{ paddingTop: 0, paddingBottom: "var(--space-9)" }} aria-label={t("projects.list")}>
+      <section className="section section--first" aria-labelledby="projects-h">
         <div className="container">
-          <div className="grid grid--3">
-            {list.map((p, n) => <ProjectCard key={p.id} project={p} index={n} delay={(n % 3) * 90} />)}
+          <SectionHeader page as="h1" id="projects-h" tag={t("nav.projects")} title={t("projects.rich")} sub={t("projects.sub")} />
+          <Reveal className="filters">
+            <FilterBar options={options} value={cat} onChange={setCat} label={t("projects.filter")} />
+          </Reveal>
+          <div className="projects" aria-label={t("projects.list")}>
+            {list.map((p, n) => <ProjectCard key={p.id} project={p} index={n} total={list.length} delay={(n % 2) * 100} />)}
           </div>
         </div>
       </section>

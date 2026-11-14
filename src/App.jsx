@@ -15,15 +15,13 @@ import BioSetup from "./pages/BioSetup.jsx";
 import BioBooks from "./pages/BioBooks.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import { useLang, FixedLanguage } from "./i18n/LanguageContext.jsx";
-import useMotion from "./hooks/useMotion.js";
 
 export default function App() {
   const { t } = useLang();
-  // /bio e suas subpáginas são independentes (link na bio do Instagram): sem navbar/footer globais,
-  // sempre em pt-BR e no tema escuro (ver BioLayout).
+  // /bio e suas subpáginas são independentes (link na bio do Instagram): sem navbar/footer globais
+  // e sempre em pt-BR (ver BioLayout).
   const { pathname } = useLocation();
   const bare = pathname === "/bio" || pathname.startsWith("/bio/");
-  useMotion();
 
   // a chave por rota faz cada página entrar com a própria transição
   const routes = (
@@ -51,9 +49,16 @@ export default function App() {
       <a className="skip-link" href="#main">{t("a11y.skip")}</a>
       <Splash />
       <ScrollManager />
-      {!bare && <Navbar />}
-      {bare ? <FixedLanguage lang="pt-BR">{routes}</FixedLanguage> : <main id="main">{routes}</main>}
-      {!bare && <Footer />}
+      {bare ? (
+        <FixedLanguage lang="pt-BR">{routes}</FixedLanguage>
+      ) : (
+        // a "folha": o site inteiro fica num painel arredondado sobre o fundo cinza, com linhas-guia nas laterais
+        <div className="sheet">
+          <Navbar />
+          <main id="main">{routes}</main>
+          <Footer />
+        </div>
+      )}
     </>
   );
 }

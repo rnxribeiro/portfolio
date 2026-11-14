@@ -18,7 +18,7 @@ import portrait from "../assets/images/renan-portrait.webp";
 // Imagem do perfil da /bio (círculo): o avatar do hero (site.hero.photo). Troque por outra importando aqui.
 export const profilePhoto = site.hero.photo;
 
-// Retrato do topo da /bio (moldura de vidro 3D). Troque a imagem em src/assets/images/renan-portrait.webp.
+// Retrato (card "Sobre mim", página Sobre e topo da /bio). Troque a imagem em src/assets/images/renan-portrait.webp.
 export const bioPortrait = { src: portrait, place: bi("São Paulo, Brasil", "São Paulo, Brazil") };
 
 export const links = [

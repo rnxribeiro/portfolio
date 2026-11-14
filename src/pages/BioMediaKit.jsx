@@ -15,7 +15,7 @@ function Block({ label, children, delay = 0 }) {
   );
 }
 
-// /bio/media-kit — o Media Kit mora só dentro da /bio (como o setup e a estante), em blocos de vidro.
+// /bio/media-kit — o Media Kit mora só dentro da /bio (como o setup e a estante), em cards.
 // Os números ainda são placeholders de src/data/mediakit.js ("XX") até você preencher os reais.
 export default function BioMediaKit() {
   const { t, L } = useLang();
@@ -30,7 +30,7 @@ export default function BioMediaKit() {
         <p className="bio-head__sub">{t("kit.sub")}</p>
         <div className="kit-head__actions">
           <a
-            className="btn btn--solid"
+            className="btn btn--dark"
             href={hasPdf ? mediaKit.pdf : undefined}
             aria-disabled={!hasPdf || undefined}
             download={hasPdf || undefined}
@@ -88,12 +88,11 @@ export default function BioMediaKit() {
         </Block>
       </div>
 
-      <Reveal as="section" className="links-section links-cta bio-contact" aria-labelledby="kit-contact" data-tilt>
-        <span className="contact-panel__light" aria-hidden="true" />
+      <Reveal as="section" className="links-section links-cta bio-contact" aria-labelledby="kit-contact">
         <span className="label">{t("kit.contact")}</span>
         <h2 id="kit-contact" className="links-cta__title">{t("kit.getInTouch")}</h2>
         <p className="links-cta__text">{t("kit.contactText")}</p>
-        <a className="cta-card" data-magnetic href={`mailto:${site.contact.email}?subject=${encodeURIComponent("Media Kit — " + site.name)}`}>
+        <a className="cta-card" href={`mailto:${site.contact.email}?subject=${encodeURIComponent("Media Kit — " + site.name)}`}>
           <span className="cta-card__tile"><Mail size={20} strokeWidth={1.75} aria-hidden="true" /></span>
           <span className="cta-card__text">
             <span className="cta-card__title">{t("links.sendEmail")}</span>

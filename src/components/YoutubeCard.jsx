@@ -17,15 +17,14 @@ function videoId(v) {
 
 // Card do YouTube da /bio: cabeçalho do canal, "tela" 16:9 e botão para o canal.
 // Sem vídeo → tela vazia elegante (anel de play que respira + barra de progresso decorativa).
-// Com vídeo → miniatura; o player (youtube-nocookie) só carrega ao clicar. Inclina com o cursor (data-tilt).
+// Com vídeo → miniatura; o player (youtube-nocookie) só carrega ao clicar. 
 export default function YoutubeCard({ delay = 0 }) {
   const { t, L } = useLang();
   const [playing, setPlaying] = useState(false);
   const id = videoId(youtube.video);
 
   return (
-    <article className="yt rise" style={{ animationDelay: `${delay}ms` }} data-tilt>
-      <span className="yt__light" aria-hidden="true" />
+    <article className="yt rise" style={{ animationDelay: `${delay}ms` }}>
       <header className="yt__head">
         <span className="yt__icon" aria-hidden="true"><SocialIcon name="youtube" size={18} /></span>
         <span className="yt__channel">
@@ -60,7 +59,7 @@ export default function YoutubeCard({ delay = 0 }) {
         )}
       </div>
 
-      <a className="btn btn--solid yt__cta" href={youtube.channel} target="_blank" rel="noopener noreferrer" data-magnetic>
+      <a className="btn btn--dark yt__cta" href={youtube.channel} target="_blank" rel="noopener noreferrer">
         {L(youtube.cta)} <span className="sr-only">{t("links.external")}</span>
         <ArrowUpRight size={16} aria-hidden="true" />
       </a>

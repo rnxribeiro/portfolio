@@ -5,7 +5,7 @@ import { useLang } from "../i18n/LanguageContext.jsx";
 
 const STORAGE_KEY = "rnx:theme-v2";
 
-// Escuro é o tema padrão; o claro é opcional e a escolha fica salva no navegador.
+// Claro é o tema padrão; o escuro é opcional e a escolha fica salva no navegador.
 // O atributo data-theme é aplicado antes do React carregar (script em index.html), evitando "flash".
 export default function ThemeToggle() {
   const { t } = useLang();
@@ -18,7 +18,7 @@ export default function ThemeToggle() {
     const apply = () => {
       flushSync(() => setTheme(next));
       root.dataset.theme = next;
-      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", next === "dark" ? "#080808" : "#f6f6f4");
+      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", next === "dark" ? "#050505" : "#e9e9e7");
     };
     try { localStorage.setItem(STORAGE_KEY, next); } catch { /* ignore */ }
     setSpin(true);

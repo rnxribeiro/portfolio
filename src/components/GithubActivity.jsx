@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { ArrowUpRight, Star, GitFork } from "lucide-react";
 import { useGithub } from "../hooks/useGithub.js";
 import { githubConfig } from "../data/github.js";
@@ -30,6 +30,12 @@ export default function GithubActivity({ showRepos = true, showGrid = true, week
   const { status, data } = useGithub();
   const username = githubConfig.username;
   const cells = useMemo(() => buildGrid(data?.perDay, weeks), [data, weeks]);
+  // em telas estreitas o mapa rola na horizontal: começa mostrando as semanas mais recentes (à direita)
+  const scrollRef = useRef(null);
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (el) el.scrollLeft = el.scrollWidth;
+  }, [cells]);
 
   const years = data ? Math.max(1, Math.round((Date.now() - new Date(data.createdAt)) / (365.25 * 864e5))) : null;
   const dash = status === "loading" ? "…" : "—";
@@ -51,14 +57,14 @@ export default function GithubActivity({ showRepos = true, showGrid = true, week
         {stats.map((s, n) => (
           <Reveal className="stat" key={s.label} delay={n * 80}>
             <dt className="label">{s.label}</dt>
-            <dd className="stat__value" style={{ margin: 0 }}><CountUp value={s.value} /></dd>
+            <dd className="stat__value"><CountUp value={s.value} /></dd>
           </Reveal>
         ))}
       </dl>
 
       {showGrid && (
-        <Reveal className="heat" data-spot variant="scale">
-          <div className="heat__scroll">
+        <Reveal className="heat">
+          <div className="heat__scroll" ref={scrollRef}>
             <div className="heat__grid" role="img" aria-label={t("gh.gridLabel")}>
               {cells.map((c, i) => (
                 <span key={c.key} className="heat__cell" data-l={level(c.n)} title={`${c.key}: ${c.n}`} style={{ "--c": Math.floor(i / 7) }} />
@@ -77,9 +83,9 @@ export default function GithubActivity({ showRepos = true, showGrid = true, week
       )}
 
       {showRepos && (
-        <div style={{ marginTop: "var(--space-8)" }}>
-          <h3 className="label" style={{ marginBottom: "var(--space-4)" }}>{t("gh.featured")}</h3>
-          <div className="grid grid--4">
+        <div className="repos">
+          <h3 className="repos__title">{t("gh.featured")}</h3>
+          <div className="repos__grid">
             {featured.map((r, n) => (
               <Reveal as="a" key={r.name} className="repo-card" href={r.url} target="_blank" rel="noopener noreferrer" delay={n * 80}>
                 <span className="repo-card__name">{r.name}</span>

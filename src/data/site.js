@@ -22,20 +22,29 @@ export const site = {
   cv: "/curriculo-renan-ribeiro.pdf",
 
   hero: {
+    // Selo acima do título (o "Agora" fica na pílula escura). Leva para a página de trajetória.
+    badge: { tag: bi("Agora", "Now"), text: bi("Estagiando no SESI e cursando TI", "Interning at SESI & studying IT"), to: "/experience" },
+    // Título do hero. Marcações: ~texto~ = tom cinza · [texto] = selo verde · *texto* = itálico serifado · \n = quebra de linha
+    headline: bi("Construindo apps,\n~sites e~ [boas ideias].", "Building apps,\n~sites &~ [good ideas]."),
     greeting: bi("Olá, eu sou o", "Hi, I'm"),
     // linha de identidade logo abaixo do nome
     role: bi("Desenvolvedor de Software Jr.", "Jr. Software Developer"),
     tagline: bi(
-      "Interessado em desenvolvimento de software e inovação, criando aplicações e soluções digitais que geram valor.",
-      "Interested in software development and innovation, creating applications and digital solutions that generate value."
+      "Oi! Sou o Renan, dev em São Paulo. Curto pegar uma ideia solta e transformar em algo que funciona de verdade.",
+      "Hey! I'm Renan, a dev from São Paulo. I like taking a loose idea and turning it into something that actually works."
     ),
-    // palavras posicionadas em profundidades diferentes dentro do objeto de vidro do hero
-    prism: [bi("Desenvolvimento de aplicações", "Application development"), bi("APIs e integração de sistemas", "APIs and systems integration"), bi("Banco de dados e arquitetura", "Database and architecture")],
     // Avatar em traço (line art) do Renan, igual nos temas claro e escuro (traço preto, preenchimento branco,
     // fundo transparente). Para trocar, substitua src/assets/images/renan-avatar.webp ou aponte outro aqui. Com photo: null o espaço fica reservado.
     photo: heroPhoto,
     photoAlt: bi("Ilustração de Renan Ribeiro", "Illustration of Renan Ribeiro"),
   },
+
+  // "O que eu faço" (Home): três cards. icon: app | plug | database
+  services: [
+    { icon: "app", title: bi("Aplicações web", "Web apps"), text: bi("Interfaces rápidas e caprichadas com React e TypeScript, do layout ao deploy.", "Fast, polished interfaces with React and TypeScript, from layout to deploy.") },
+    { icon: "plug", title: bi("APIs e integrações", "APIs & integrations"), text: bi("Sistemas conversando entre si com Node.js e APIs REST.", "Systems talking to each other with Node.js and REST APIs.") },
+    { icon: "database", title: bi("Dados e arquitetura", "Data & architecture"), text: bi("Banco de dados bem modelado com PostgreSQL, pensando na estrutura antes do código.", "Well-modeled databases with PostgreSQL, thinking about structure before code.") },
+  ],
 
   // Metadados curtos (prévia do About na Home e página About).
   facts: [
@@ -46,12 +55,12 @@ export const site = {
 
   about: {
     preview: bi(
-      "Sou estudante de Tecnologia da Informação e desenvolvedor de software, interessado na construção de aplicações e soluções tecnológicas. Tenho explorado diferentes tecnologias e ferramentas para desenvolver projetos, integrar sistemas e transformar ideias em soluções funcionais.",
-      "I am an Information Technology student and software developer, interested in building applications and technological solutions. I have been exploring various technologies and tools to develop projects, integrate systems, and transform ideas into functional solutions."
+      "Estudo Tecnologia da Informação e passo boa parte do tempo construindo coisas: apps, integrações e projetos pessoais. Gosto de testar ferramentas novas, entender como os sistemas funcionam por dentro e transformar ideia em produto.",
+      "I study Information Technology and spend a good part of my time building things: apps, integrations and side projects. I like trying new tools, understanding how systems work under the hood and turning ideas into products."
     ),
     intro: bi(
-      "Sou estudante de Tecnologia da Informação e desenvolvedor de software, interessado na construção de aplicações e soluções tecnológicas. Tenho explorado diferentes tecnologias e ferramentas para desenvolver projetos, integrar sistemas e transformar ideias em soluções funcionais.",
-      "I am an Information Technology student and software developer, interested in building applications and technological solutions. I have been exploring various technologies and tools to develop projects, integrate systems, and transform ideas into functional solutions."
+      "Sou dev, estudante de TI na UNIVESP e estagiário no SESI. Gosto de entender como as coisas funcionam por dentro, testar ferramentas novas e transformar ideia solta em projeto de verdade, de preferência com uma interface caprichada.",
+      "I'm a dev, an IT student at UNIVESP and an intern at SESI. I like understanding how things work under the hood, trying new tools and turning loose ideas into real projects, ideally with a polished interface."
     ),
     // Seções da página /about (textos de "Sobre").
     sections: [
@@ -74,7 +83,9 @@ export const site = {
   contact: {
     email: "rnxribeiro@gmail.com",
     headline: bi("Vamos conversar.", "Let's talk."),
-    text: bi("Tem um projeto, colaboração ou ideia?", "Have a project, collaboration or idea?"),
+    // Título do convite de contato (fim da Home e da página Sobre). Mesmas marcações do hero.
+    cta: bi("Tem uma ideia?\n~Bora tirar do papel.~", "Got an idea?\n~Let's make it real.~"),
+    text: bi("Projeto, vaga, colaboração ou só um papo: me chama que eu respondo.", "A project, a job, a collab or just a chat: drop me a line and I'll reply."),
     subject: bi("Contato pelo site RNX", "Message from the RNX site"),
   },
 
