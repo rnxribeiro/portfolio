@@ -5,6 +5,7 @@ import { site } from "../data/site.js";
 import { useLang } from "../i18n/LanguageContext.jsx";
 import Rich from "./Rich.jsx";
 import ToolIcon from "./ToolIcon.jsx";
+import BinaryPortrait from "./BinaryPortrait.jsx";
 import cutout from "../assets/images/renan-cutout.webp";
 import shotA from "../assets/projects/raidens-performance.webp";
 import shotB from "../assets/projects/qr-code-generator.webp";
@@ -55,7 +56,7 @@ function Orb({ pos, delay, depth, children, className = "" }) {
   );
 }
 
-// Hero: título em serifa, retrato recortado no centro com cards de vidro em 3D ao redor da cabeça
+// Hero: título em serifa, retrato feito de 0 e 1 no centro (BinaryPortrait) com cards de vidro em 3D ao redor da cabeça
 // (uns atrás, outros na frente), cards laterais ligados por linhas finas, um selo que gira e notas nos cantos.
 export default function Hero({ onNext }) {
   const { t, L } = useLang();
@@ -126,7 +127,7 @@ export default function Hero({ onNext }) {
           <Orb pos="shot-b" delay={1100} depth={18} className="orb__shot"><img src={shotB} alt="" /></Orb>
           <Orb pos="back" delay={950} depth={12}><OrbCard o={orbit[1]} /></Orb>
 
-          <img className="hero__cutout intro" style={d(450)} src={cutout} alt="" width="608" height="765" fetchPriority="high" />
+          <BinaryPortrait className="hero__cutout" src={cutout} />
 
           {/* na frente */}
           <Orb pos="front-a" delay={1150} depth={30}><OrbCard o={orbit[0]} /></Orb>

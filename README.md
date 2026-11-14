@@ -78,7 +78,7 @@ Exemplo (`site.hero.headline`): `"Construindo apps,\n~sites e~ [boas ideias]."`
 - Com "reduzir movimento" ativo no sistema, o conteúdo aparece direto, sem animação.
 
 ## Imagens
-- **Hero:** `src/assets/images/renan-cutout.webp` é a sua foto recortada (fundo transparente, em P&B), no centro do hero. Os cards de vidro em volta da cabeça usam os textos de `site.hero.orbit` e os prints dos projetos (`src/assets/projects/`). Para trocar a foto, gere outro PNG/WebP com fundo transparente e substitua o arquivo.
+- **Hero:** `src/assets/images/renan-cutout.webp` é a sua foto recortada (fundo transparente, em P&B). No hero ela é redesenhada com 0 e 1 (`src/components/BinaryPortrait.jsx`): os dígitos fogem do cursor, trocam de valor e acendem na cor de destaque. O tamanho dos dígitos é a prop `cell` e a força do efeito fica nas constantes do topo do arquivo. Os cards de vidro em volta da cabeça usam os textos de `site.hero.orbit` e os prints dos projetos (`src/assets/projects/`). Para trocar a foto, gere outro PNG/WebP com fundo transparente e substitua o arquivo.
 - Os textos do hero (título em serifa, cards laterais, notas dos cantos e o selo que gira) ficam em `site.hero` (`src/data/site.js`): `headline`, `cards`, `orbit`, `now`, `motto` e `ring`.
 - A foto original (`src/assets/images/renan-portrait.webp`) aparece no card "Sobre mim" da Home, na página Sobre e no topo da `/bio`.
 - O avatar em traço (`src/assets/images/renan-avatar.webp`) continua em `hero.photo` (`profilePhoto` em `src/data/bio.js`), hoje fora do hero.
