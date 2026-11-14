@@ -10,11 +10,9 @@ import LinkItem from "../components/LinkItem.jsx";
 import FeaturedLink from "../components/FeaturedLink.jsx";
 import YoutubeCard from "../components/YoutubeCard.jsx";
 import MediaKitCard from "../components/MediaKitCard.jsx";
-import BioPortrait from "../components/BioPortrait.jsx";
-import SplitText from "../components/SplitText.jsx";
 
 // Página /bio — central de links para a bio do Instagram. Independente: sem navbar/footer globais.
-// Mesma linguagem do site: retrato em moldura de vidro 3D, nome revelado por máscara, cards de vidro que inclinam.
+// Mesma linguagem do site: retrato redondo com adesivo, nome grande, cards brancos arredondados.
 export default function Bio() {
   const { t, L } = useLang();
   useDocumentMeta({ title: `${site.name} — ${t("links.title")}`, description: t("links.meta") });
@@ -27,12 +25,13 @@ export default function Bio() {
   return (
     <BioLayout>
       <section className="bio-hero" aria-labelledby="links-name">
-        <div className="bio-hero__object intro intro--object" style={{ "--d": "200ms" }}>
-          <BioPortrait src={bioPortrait.src} alt={t("links.avatarAlt")} place={bioPortrait.place} />
+        <div className="bio-hero__avatar intro" style={{ "--d": "80ms" }}>
+          <img src={bioPortrait.src} alt={t("links.avatarAlt")} width="112" height="112" fetchPriority="high" />
+          <span className="sticker">{L(bioPortrait.place)}</span>
         </div>
-        <p className="eyebrow intro" style={{ "--d": "350ms" }}><span className="eyebrow__dot" aria-hidden="true" />{t("links.role")}</p>
-        <h1 id="links-name" className="bio-hero__name"><SplitText text={site.name} delay={420} step={120} /></h1>
-        <div className="intro" style={{ "--d": "700ms" }}><SocialLinks only={bioSocials} /></div>
+        <h1 id="links-name" className="bio-hero__name intro" style={{ "--d": "180ms" }}>{site.name}</h1>
+        <p className="pill intro" style={{ "--d": "260ms" }}><span className="dot" aria-hidden="true" />{t("links.role")}</p>
+        <div className="intro" style={{ "--d": "340ms" }}><SocialLinks only={bioSocials} /></div>
       </section>
 
       <section className="links-section" aria-labelledby="links-label">
@@ -52,12 +51,11 @@ export default function Bio() {
         </section>
       )}
 
-      <section className="links-section links-cta bio-contact rise" style={delay(base + 260)} aria-labelledby="links-cta-title" data-tilt>
-        <span className="contact-panel__light" aria-hidden="true" />
+      <section className="links-section links-cta bio-contact rise" style={delay(base + 260)} aria-labelledby="links-cta-title">
         <span className="label">{t("nav.contact")}</span>
         <h2 id="links-cta-title" className="links-cta__title">{L(site.contact.headline)}</h2>
         <p className="links-cta__text">{t("links.ctaText")}</p>
-        <a className="cta-card" data-magnetic href={`mailto:${site.contact.email}?subject=${encodeURIComponent(L(site.contact.subject))}`}>
+        <a className="cta-card" href={`mailto:${site.contact.email}?subject=${encodeURIComponent(L(site.contact.subject))}`}>
           <span className="cta-card__tile"><Mail size={20} strokeWidth={1.75} aria-hidden="true" /></span>
           <span className="cta-card__text">
             <span className="cta-card__title">{t("links.sendEmail")}</span>

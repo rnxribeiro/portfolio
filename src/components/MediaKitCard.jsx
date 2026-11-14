@@ -5,13 +5,12 @@ import { useLang } from "../i18n/LanguageContext.jsx";
 
 const topics = ["kit.platforms", "kit.audience", "kit.formats", "kit.partnerships"];
 
-// Card do Media Kit da /bio: um maço de folhas de vidro em leque (que se abre no hover/foco) ao lado do texto,
-// tópicos do kit e o convite para abrir. Inclina com o cursor (data-tilt). As folhas são só decoração.
+// Card do Media Kit da /bio: um maço de folhas em leque (que se abre no hover/foco) ao lado do texto,
+// tópicos do kit e o convite para abrir. As folhas são só decoração.
 export default function MediaKitCard({ title, href, delay = 0 }) {
   const { t, L } = useLang();
   return (
-    <Link to={href} className="mk rise" style={{ animationDelay: `${delay}ms` }} data-tilt>
-      <span className="mk__light" aria-hidden="true" />
+    <Link to={href} className="mk rise" style={{ animationDelay: `${delay}ms` }}>
       <span className="mk__stack" aria-hidden="true">
         <span className="mk__sheet mk__sheet--3" />
         <span className="mk__sheet mk__sheet--2" />

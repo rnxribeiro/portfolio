@@ -18,7 +18,6 @@ export default function LinkItem({ title, description, href, icon, external = fa
 
   const inner = (
     <>
-      <span className="link-card__light" aria-hidden="true" />
       <span className="link-card__tile"><Glyph name={icon} /></span>
       <span className="link-card__text">
         <span className="link-card__title">
@@ -42,9 +41,9 @@ export default function LinkItem({ title, description, href, icon, external = fa
       {!href ? (
         <div className="link-card link-card--off">{inner}</div>
       ) : external ? (
-        <a className="link-card" data-tilt href={href} target="_blank" rel="noopener noreferrer">{inner}</a>
+        <a className="link-card" href={href} target="_blank" rel="noopener noreferrer">{inner}</a>
       ) : (
-        <Link className="link-card" data-tilt to={href}>{inner}</Link>
+        <Link className="link-card" to={href}>{inner}</Link>
       )}
     </li>
   );

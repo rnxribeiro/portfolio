@@ -52,8 +52,7 @@ export default function Splash() {
     <div className={`splash${phase === "hide" ? " is-hiding" : ""}`} role="status" aria-live="polite" style={{ "--splash-ms": `${cfg.minMs}ms` }}>
       <span className="sr-only">{t("splash.loading")}</span>
       <div className="splash__inner" aria-hidden="true">
-        <span className="splash__mark">{site.brand}</span>
-        <span className="splash__handle">{site.handle}</span>
+        <span className="splash__mark">{site.brand.toLowerCase()}<span>.</span></span>
         <span className="splash__bar" />
       </div>
     </div>
